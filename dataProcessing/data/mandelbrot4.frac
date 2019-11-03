@@ -1,7 +1,0 @@
-type: Mandelbrot4
-pixels: 1080
-centerX: .5
-centerY: 0
-axisLength: 1.5
-Iterations: 32
-
