@@ -147,8 +147,10 @@ def main():
     print(c1 > c2)
     print(c1 >= c2)
     """
-#call the test program   
-main()
+    
+def run():
+    #call the test program   
+    main()
 
 
 

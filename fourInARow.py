@@ -127,28 +127,16 @@ def isConsecutiveFour(nRows, nCols, board):
     else:
         print("False")
    
-# Use this to read a set of numbers one per line from a file via file 
-# redirection.
-board = readAFile()
-
-#board = readMatrix() # Uncomment this line to enter a set of numbers manually 
-                      # seperated by enter
-
-#call the main function
-isConsecutiveFour(nRows, nCols, board)
-
-
-
-print(checkDiag2(nRows, nCols, board))
-
-
-
-
-
-
-
-
-
-
-
-
+    
+def run():    
+    # Use this to read a set of numbers one per line from a file via file 
+    # redirection.
+    board = readAFile()
+    
+    #board = readMatrix() # Uncomment this line to enter a set of numbers manually 
+                          # seperated by enter
+    
+    #call the main function
+    isConsecutiveFour(nRows, nCols, board)
+    
+    print(checkDiag2(nRows, nCols, board))

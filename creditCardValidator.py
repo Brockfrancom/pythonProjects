@@ -6,11 +6,8 @@ Douglas Galarus
 2/28/2018
 Exercise 6.29
 """
-#get card number
-number = int(input("Enter a card number: "))
-
 #define function to count the size of number and return answer in d
-def getSize(d):
+def getSize(d, number):
     d = 0
     k = 1
     while ((int(number) // k) != 0):
@@ -20,7 +17,7 @@ def getSize(d):
 
 #get the first digits from number if they match the requirements and return in k
 def getPrefix(number, d):
-    count = getSize(d)
+    count = getSize(d, number)
     k = (number // (10 ** (count - 1)))
     if k == 4 or k == 5 or k == 6:
         return k
@@ -42,7 +39,7 @@ def prefixMatched(number, d):
     
 #sum the digits in the odd places of number
 def sumOfOddPlace(number):
-    count = getSize(number)
+    count = getSize(number, number)
     odd = 0
     if (count % 2) != 0:
         while count > 0:
@@ -58,7 +55,7 @@ def sumOfOddPlace(number):
 
 #get the digit in the evens places
 def getDigit(number):
-    count = getSize(number)
+    count = getSize(number, number)
     if (count % 2) != 0:
         count -= 1  
     while count > 0:
@@ -70,7 +67,7 @@ def getDigit(number):
 
 #add the double evens together and if it is over 10 the sum of the 2 digits
 def sumOfDoubleEvenPlace(number):
-    count = getSize(number)
+    count = getSize(number, number)
     if (count % 2) != 0:
         count -= 1  
     even = 0
@@ -85,18 +82,22 @@ def sumOfDoubleEvenPlace(number):
 #check that all requirements are matched or not by calling all the functions 
 #and return true if all are met
 def isValid(number):
-    if (13 <= getSize(number) <= 16) and \
-    (prefixMatched(number, getPrefix(number, getSize(number))) == "True") and \
+    if (13 <= getSize(number, number) <= 16) and \
+    (prefixMatched(number, getPrefix(number, getSize(number, number))) == "True") and \
     (((sumOfOddPlace(number) + sumOfDoubleEvenPlace(number)) % 10) == 0):
         return 'True'
     else:
         return 'False'
 
-#call the main function and print result if true
-if isValid(number) == 'True':
-    print("The card number you entered is valid.")
-else:
-    print("The card number you entered is not valid.")
+def run():
+    #get card number
+    number = int(input("Enter a card number: "))
+    
+    #call the main function and print result if true
+    if isValid(number) == 'True':
+        print("The card number you entered is valid.")
+    else:
+        print("The card number you entered is not valid.")
 
 
 

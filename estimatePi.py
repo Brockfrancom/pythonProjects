@@ -16,14 +16,15 @@ def m(i):
         i -= 1
     return m
 
-#print table header
-print("i\t\t  m(i)\n")
-
-#print table
-i = 1
-while i < 1000: 
-    print(i, '\t\t', format(round(m(i), 4), '5.4f'))
-    i += 100
+def run():
+    #print table header
+    print("i\t\t  m(i)\n")
+    
+    #print table
+    i = 1
+    while i < 1000: 
+        print(i, '\t\t', format(round(m(i), 4), '5.4f'))
+        i += 100
 
 
 
