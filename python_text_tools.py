@@ -1,17 +1,5 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Sep  5 16:03:08 2018
-
-@author: Brock
-"""
-
-import sys
-
-if len(sys.argv) < 3:
-    print("Usage: tt.py TOOL_NAME FILENAME")
-    sys.exit(1)
-    
+import sys    
     
 def cat(args):
     for filename in args:
@@ -38,8 +26,6 @@ def head(args):
 
 
 def tail(args):
-    
-    
     if args[0] == "-n":
         numlines = int(args[1])
         args = args[2:]
@@ -103,30 +89,26 @@ def cut(args):
                    
 #use single quotes to use double quotes when using the grep command from the command line                   
 
-
-
-
-
-
-if len(sys.argv) < 3:
-    print(f"Usage: {sys.argv[0]} TOOL_NAME FILENAME")
-    sys.exit(1)
-
-if sys.argv[1] == 'cat':
-    cat(sys.argv[2:])
-elif sys.argv[1] == 'head':
-    head(sys.argv[2:])
-elif sys.argv[1] == 'tail':
-    tail(sys.argv[2:])
-elif sys.argv[1] == 'wc':
-    wc(sys.argv[2:])
-elif sys.argv[1] == 'grep':
-    grep(sys.argv[2:])
-elif sys.argv[1] == 'cut':
-    cut(sys.argv[2:])
-else: 
-    print(f"{sys.argv[1]} is not a recognized command :(")
-    sys.exit[2]
+def run():
+    if len(sys.argv) < 3:
+        print(f"Usage: {sys.argv[0]} TOOL_NAME FILENAME")
+        sys.exit(1)
+    
+    if sys.argv[1] == 'cat':
+        cat(sys.argv[2:])
+    elif sys.argv[1] == 'head':
+        head(sys.argv[2:])
+    elif sys.argv[1] == 'tail':
+        tail(sys.argv[2:])
+    elif sys.argv[1] == 'wc':
+        wc(sys.argv[2:])
+    elif sys.argv[1] == 'grep':
+        grep(sys.argv[2:])
+    elif sys.argv[1] == 'cut':
+        cut(sys.argv[2:])
+    else: 
+        print(f"{sys.argv[1]} is not a recognized command :(")
+        sys.exit[2]
     
     
     

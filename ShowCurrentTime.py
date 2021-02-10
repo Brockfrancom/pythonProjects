@@ -16,26 +16,26 @@ Enter the time zone offset to GMT: -5
 The current time is 4:50:34
 
 """
-#get timezone offset
-offset = eval(input("Enter the time zone offset to GMT: "))
-#formating
-print("\n")
-
-import time
-
-currentTime = time.time() #get current time
-
-#format time
-totalSeconds = int(currentTime)
-currentSecond = totalSeconds % 60
-totalMinutes = totalSeconds // 60
-currentMinute = totalMinutes % 60
-totalHours = totalMinutes // 60
-currentHour = (((totalHours % 24) - offset) % 12) #calculate hour with timezone offset
-
-
-#print time
-print("The current time is " + str(currentHour) + ":" + str(currentMinute) + ":" + str(currentSecond))
+def run():
+    #get timezone offset
+    offset = eval(input("Enter the time zone offset to GMT: "))
+    #formating
+    print("\n")
+    
+    import time
+    
+    currentTime = time.time() #get current time
+    
+    #format time
+    totalSeconds = int(currentTime)
+    currentSecond = totalSeconds % 60
+    totalMinutes = totalSeconds // 60
+    currentMinute = totalMinutes % 60
+    totalHours = totalMinutes // 60
+    currentHour = (((totalHours % 24) - offset) % 12) #calculate hour with timezone offset
+    
+    #print time
+    print("The current time is " + str(currentHour) + ":" + str(currentMinute) + ":" + str(currentSecond))
 
 
 

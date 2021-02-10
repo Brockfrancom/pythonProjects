@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr 17 08:42:23 2018
-
-@author: admin
-"""
 
 from CheckSudokuSolution import isValid
 

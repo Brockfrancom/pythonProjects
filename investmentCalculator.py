@@ -7,7 +7,6 @@ Douglas Galarus
 hw13 - Exercise 9.2
 
 """
-
 from tkinter import *
 
 #function to calculate and display the future value
@@ -41,7 +40,7 @@ def run():
          column = 2)
     
     #create a button to calculate total amount
-    Button(window, text = "Calculate", command = lambda: func=calculateFutureValue(investmentAmountVar, yearsVar, annualInterestRateVar, window)).grid(row = 5, \
+    Button(window, text = "Calculate", command = lambda: calculateFutureValue(investmentAmountVar, yearsVar, annualInterestRateVar, window)).grid(row = 5, \
           column = 2, sticky = E)
     
     window.mainloop()

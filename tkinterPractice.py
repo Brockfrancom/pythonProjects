@@ -34,17 +34,17 @@ def processEvent(event):
         canvas.create_text(event.x, event.y, text = "Mouse pointer is not in "\
                            "the circle", tags = N)
 
-window = Tk() #create a window
-canvas = Canvas(window) #add a canvas
-canvas.pack()
-
-#create a circle on the canvas
-c1 = canvas.create_oval(50, 10, 150, 110)
-
-#button events
-canvas.bind("<B1-Motion>", processEvent)
-canvas.bind("<ButtonRelease-1>", release)
-
-
-window.mainloop()
+def run():
+    window = Tk() #create a window
+    canvas = Canvas(window) #add a canvas
+    canvas.pack()
+    
+    #create a circle on the canvas
+    c1 = canvas.create_oval(50, 10, 150, 110)
+    
+    #button events
+    canvas.bind("<B1-Motion>", processEvent)
+    canvas.bind("<ButtonRelease-1>", release)
+    
+    window.mainloop()
 

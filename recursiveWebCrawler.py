@@ -12,27 +12,52 @@ import requests
 from bs4 import BeautifulSoup
 import time
 
-start = time.time()
-if len(sys.argv) < 1:
-    print("Usage: python recursiveWebCrawler.py absoluteURL [maxDepth] [file]")
-try:
-    url = sys.argv[1]
-    if (url.startswith('http://') == False) and (url.startswith('https://') == False):
-        print("Error: Invalid URL supplied.\nPlease supply an absolute URL to this program")
+def run():
+    start = time.time()
+    if len(sys.argv) < 1:
+        print("Usage: python recursiveWebCrawler.py absoluteURL [maxDepth] [file]")
+    try:
+        url = sys.argv[1]
+        if (url.startswith('http://') == False) and (url.startswith('https://') == False):
+            print("Error: Invalid URL supplied.\nPlease supply an absolute URL to this program")
+            sys.exit()
+    except IndexError:
+        print("Error: no URL supplied")
         sys.exit()
-except IndexError:
-    print("Error: no URL supplied")
-    sys.exit()
-try:
-    maxdepth = int(sys.argv[2])
-except IndexError:
-    maxdepth = 3
-try:
-    file = sys.argv[3]
-    print("Printing results to " + file)
-except IndexError:
-    print("No file specified, printing to screen")
-    file = sys.stdout
+    try:
+        maxdepth = int(sys.argv[2])
+    except IndexError:
+        maxdepth = 3
+    try:
+        file = sys.argv[3]
+        print("Printing results to " + file)
+    except IndexError:
+        print("No file specified, printing to screen")
+        file = sys.stdout
+
+    if file != sys.stdout:
+        with open(file, "w") as m:
+            print("Crawling " + url + " to a maximum depth of " + maxdepth)
+            m.write("Crawling " + str(url) + " to a maximum depth of " + str(maxdepth) + "\n")
+            m.write(url + "\n")
+            crawlFile(url, depth, maxdepth, visited, numberFound, m, variable)
+            m.write("After crawling " + str(url) + " to a maximum depth of " + str(maxdepth) + "\n")
+            m.write("Searched " + str(len(visited)) + " websites.\n")
+            m.write("Found " + str(len(numberFound)) + " urls.\n")
+            end = time.time()
+            time1 = str(end - start)
+            m.write("The program took " + time1 + " seconds to run.\n")
+            print("Done")
+    else:        
+        print("Crawling " + url + " to a maximum depth of " + str(maxdepth))
+        print(url)
+        crawl(url, depth, maxdepth, visited, numberFound)   
+        end = time.time()
+        time2 = str(end - start)
+        print("After crawling " + str(url) + " to a maximum depth of " + str(maxdepth))
+        print("Searched " + str(len(visited)) + " websites.")
+        print("Found " + str(len(numberFound)) + " urls.")
+        print("The program took " + time2 + " seconds to run.")
 
 numberFound = []   
 depth = 1    
@@ -148,26 +173,3 @@ def crawl(url, depth, maxdepth, visited, numberFound):
 
             crawl(url, depth+1, maxdepth, visited, numberFound)
 
-if file != sys.stdout:
-    with open(file, "w") as m:
-        print("Crawling " + url + " to a maximum depth of " + maxdepth)
-        m.write("Crawling " + str(url) + " to a maximum depth of " + str(maxdepth) + "\n")
-        m.write(url + "\n")
-        crawlFile(url, depth, maxdepth, visited, numberFound, m, variable)
-        m.write("After crawling " + str(url) + " to a maximum depth of " + str(maxdepth) + "\n")
-        m.write("Searched " + str(len(visited)) + " websites.\n")
-        m.write("Found " + str(len(numberFound)) + " urls.\n")
-        end = time.time()
-        time = str(end - start)
-        m.write("The program took " + time + " seconds to run.\n")
-        print("Done")
-else:        
-    print("Crawling " + url + " to a maximum depth of " + str(maxdepth))
-    print(url)
-    crawl(url, depth, maxdepth, visited, numberFound)   
-    end = time.time()
-    time = str(end - start)
-    print("After crawling " + str(url) + " to a maximum depth of " + str(maxdepth))
-    print("Searched " + str(len(visited)) + " websites.")
-    print("Found " + str(len(numberFound)) + " urls.")
-    print("The program took " + time + " seconds to run.")

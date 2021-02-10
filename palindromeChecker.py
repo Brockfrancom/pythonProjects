@@ -8,9 +8,6 @@ Exercise 6.3
 """
 import math
 
-#get number
-number = int(input("Enter a number: "))
-
 #reverse the number
 def reverse(number):
 #count the digits in number
@@ -19,7 +16,7 @@ def reverse(number):
     while (number // k != 0):
         count += 1
         k *= 10
-#reverse the number
+    #reverse the number
     reverseNumber = 0
     while count > 0:
         k = int(k / 10)
@@ -34,9 +31,10 @@ def isPalindrome(number):
         print("True")
     else:
         print("False")
-        
-#run the main function
-isPalindrome(number)
+ 
+def run():    
+    number = int(input("Enter a number: "))
+    isPalindrome(number)
 
 
 
