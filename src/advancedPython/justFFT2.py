@@ -109,7 +109,7 @@ def DPfft(p,v,n,depth=0):
     #return the solution
     return C[int(math.log(n,2))]
 
-if __name__ == "__main__":
+def run():
     #used to make sure that fft and dpfft get the same results. 
     # n = 8
     # p = [0, 1, 2, 3, 4, 5, 6, 7]

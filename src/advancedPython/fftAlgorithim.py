@@ -60,22 +60,23 @@ and the answer back is:
 
 These results are the same within 15 significant digits.
 '''
-number = []
-FFTresults = []
-i = 128
-while(i <= 67108864):
-    print("Running simulation: "+str(i))
-    number.append(i)
-    p = [random.randint(0, i) for x in range(0, i)]
-    start = time.time()
-    A = FFT([complex(p[n],0) for n in range(0,i)], getV(i, 1), i)
-    total = time.time() - start
-    FFTresults.append(total)
-    i = 2*i
-
-plt.plot(FFTresults, number, 'r', label='FFT')
-plt.xlabel("Run time, seconds")
-plt.ylabel("Number of elements")
-plt.title("Polynomial multipy, FFT algorithim")
-plt.legend()
-plt.show()
+def run():
+    number = []
+    FFTresults = []
+    i = 128
+    while(i <= 67108864):
+        print("Running simulation: "+str(i))
+        number.append(i)
+        p = [random.randint(0, i) for x in range(0, i)]
+        start = time.time()
+        A = FFT([complex(p[n],0) for n in range(0,i)], getV(i, 1), i)
+        total = time.time() - start
+        FFTresults.append(total)
+        i = 2*i
+    
+    plt.plot(FFTresults, number, 'r', label='FFT')
+    plt.xlabel("Run time, seconds")
+    plt.ylabel("Number of elements")
+    plt.title("Polynomial multipy, FFT algorithim")
+    plt.legend()
+    plt.show()
