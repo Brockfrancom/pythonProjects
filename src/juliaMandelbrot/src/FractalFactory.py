@@ -8,18 +8,18 @@ Erik Falor
 Fractal Factory
 """
 
-import Mandelbrot
+import mandelbrot
 import Mandelbrot4
-import Julia
+import julia
 class FractalFactory:
     def count():
         pass
     
     def fractal(iterations, Type, x, y):
         if Type == 'Julia':
-            return Julia.Julia.count(complex(x, y), iterations)
+            return julia.Julia.count(complex(x, y), iterations)
         elif Type =='Mandelbrot':
-            return Mandelbrot.Mandelbrot.count(complex(x, y), iterations)
+            return mandelbrot.Mandelbrot.count(complex(x, y), iterations)
         elif Type == "Mandelbrot4":
             return Mandelbrot4.Mandelbrot4.count(complex(x, y), iterations)
 

@@ -120,7 +120,7 @@ def generateProblem(N, aveSize):
         V.append(random()*10)
     return S, V
 
-if __name__ == "__main__":
+def run():
     '''    
     for _ in range(0,100):
         S = [randint(1,K/2) for _ in range(0,N + 1)]

@@ -57,48 +57,49 @@ def DCmult3Sub(P, Q, n, m):
 
 ######################### Comparison of algorithims ##################
 
-number = []
-HSresults = []
-DCresults = []
-DC3SubResults = []
-i = 4
-while(i <= 32768):
-    number.append(i)
-    A = [random.randint(0, i) for x in range(0, i)]
-    B = [random.randint(0, i) for x in range(0, i)]
-    start = time.time()
-    C = highSchoolMult(A, B, len(A), len(B))
-    total = time.time() - start
-    HSresults.append(total)
-    start2 = time.time()
-    C = DCmult(A, B, len(A), len(B))
-    total2 = time.time() - start2
-    DCresults.append(total2)
-    start3 = time.time()
-    C = DCmult3Sub(A, B, len(A), len(B))
-    total3 = time.time() - start3
-    DC3SubResults.append(total3)
-    i = 2*i
-
-hsSlope, intercept = np.polyfit(np.log(number), np.log(HSresults), 1)
-DCs, intercept = np.polyfit(np.log(number), np.log(DCresults), 1)
-DC3s, intercept = np.polyfit(np.log(number), np.log(DC3SubResults), 1)
-
-plt.plot(number, HSresults, 'b', label='HS, Slope: '+str(hsSlope)[:6])
-plt.plot(number, DCresults, 'r', label='Divide, Slope: '+str(DCs)[:6])
-plt.plot(number, DC3SubResults, 'g', label='3 Sub, Slope: '+str(DC3s)[:6])
-plt.yscale('log')
-plt.xscale('log')
-plt.ylabel("Run time, seconds")
-plt.xlabel("Number of elements")
-plt.title("Polynomial multipy, HS vs DC vs 3 Sub")
-plt.legend()
-plt.show()
-plt.savefig('graph3algorithims.png')
-
-with open("output.txt", 'w+') as f:
-    f.write(HSresults)
-    f.write('\n')
-    f.write(DCresults)
-    f.write('\n')
-    f.write(DC3SubResults)
+def run():
+    number = []
+    HSresults = []
+    DCresults = []
+    DC3SubResults = []
+    i = 4
+    while(i <= 32768):
+        number.append(i)
+        A = [random.randint(0, i) for x in range(0, i)]
+        B = [random.randint(0, i) for x in range(0, i)]
+        start = time.time()
+        C = highSchoolMult(A, B, len(A), len(B))
+        total = time.time() - start
+        HSresults.append(total)
+        start2 = time.time()
+        C = DCmult(A, B, len(A), len(B))
+        total2 = time.time() - start2
+        DCresults.append(total2)
+        start3 = time.time()
+        C = DCmult3Sub(A, B, len(A), len(B))
+        total3 = time.time() - start3
+        DC3SubResults.append(total3)
+        i = 2*i
+    
+    hsSlope, intercept = np.polyfit(np.log(number), np.log(HSresults), 1)
+    DCs, intercept = np.polyfit(np.log(number), np.log(DCresults), 1)
+    DC3s, intercept = np.polyfit(np.log(number), np.log(DC3SubResults), 1)
+    
+    plt.plot(number, HSresults, 'b', label='HS, Slope: '+str(hsSlope)[:6])
+    plt.plot(number, DCresults, 'r', label='Divide, Slope: '+str(DCs)[:6])
+    plt.plot(number, DC3SubResults, 'g', label='3 Sub, Slope: '+str(DC3s)[:6])
+    plt.yscale('log')
+    plt.xscale('log')
+    plt.ylabel("Run time, seconds")
+    plt.xlabel("Number of elements")
+    plt.title("Polynomial multipy, HS vs DC vs 3 Sub")
+    plt.legend()
+    plt.show()
+    plt.savefig('graph3algorithims.png')
+    
+    with open("output.txt", 'w+') as f:
+        f.write(HSresults)
+        f.write('\n')
+        f.write(DCresults)
+        f.write('\n')
+        f.write(DC3SubResults)

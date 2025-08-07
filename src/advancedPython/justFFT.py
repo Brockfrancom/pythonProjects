@@ -97,7 +97,7 @@ def polyMultFFT(N0, N1):
     final = [int(((Sinv[i].real)/n)) for i in range(0, n)]   
     return final
 
-if __name__ == "__main__":
+def run():
     #1 and 2
     # This section compares answers returned by the HS and FFT algorithims. 
     # This section also calculates the inaccuracy between solutions. 
